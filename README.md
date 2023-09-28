@@ -2,45 +2,43 @@
 
 ###  Soru1:Görev Yöneticisi Uygulaması 
 
-#### Proje Açıklaması: 
+Proje Açıklaması: Bu ödevde, Python programlama dilini kullanarak bir görev yöneticisi uygulaması oluşturacaksınız. Bu uygulama, kullanıcılara görevlerini eklemelerine, tamamlamalarına, silmelerine ve listelemelerine olanak tanır. 
 
-Bu ödevde, Python programlama dilini kullanarak bir görev yöneticisi uygulaması oluşturacaksınız. Bu uygulama, kullanıcılara görevlerini eklemelerine, tamamlamalarına, silmelerine ve listelemelerine olanak tanır. 
+##### Gereksinimler: 
 
-Gereksinimler: 
+1- Görevler, bir Python listesi içinde saklanacak ve her görev bir sözlük olarak temsil edilecektir. Her görev aşağıdaki özelliklere sahip olmalıdır: 
 
-Görevler, bir Python listesi içinde saklanacak ve her görev bir sözlük olarak temsil edilecektir. Her görev aşağıdaki özelliklere sahip olmalıdır: 
+* Sıra Numarası (Otomatik olarak atanmalıdır) 
 
-Sıra Numarası (Otomatik olarak atanmalıdır) 
+* Görevin Adı 
 
-Görevin Adı 
-
-Durumu (Başarılı, Beklemede veya Silindi) 
+* Durumu (Başarılı, Beklemede veya Silindi) 
 
  
 
-Kullanıcının yapabileceği işlemler: 
+2- Kullanıcının yapabileceği işlemler: 
 
-Yeni bir görev ekle 
+* Yeni bir görev ekle 
 
-Bir görevi tamamla 
+* Bir görevi tamamla 
 
-Bir görevi sil 
+* Bir görevi sil 
 
-Tamamlanmış görevleri listele 
+* Tamamlanmış görevleri listele 
 
-Tüm görevleri durumları ile birlikte listele 
+* Tüm görevleri durumları ile birlikte listele 
 
-Çıkış 
+* Çıkış 
 
  
 
-Görevler, eklenme sırasına göre otomatik olarak sıra numarası almalıdır. 
+3-Görevler, eklenme sırasına göre otomatik olarak sıra numarası almalıdır. 
 
-Yeni eklenecek görevler silinen görev numaralarının yerine kaydedilmelidir. 
+4-Yeni eklenecek görevler silinen görev numaralarının yerine kaydedilmelidir. 
 
-Görevler listelenirken sıra numarasına göre sıralanmalıdır. 
+5-Görevler listelenirken sıra numarasına göre sıralanmalıdır. 
 
-Kullanıcıya her işlem sonrasında uygun geri bildirimler verilmelidir. Örneğin, yeni bir görev eklediğinde, görev eklenmiş olduğuna dair bir mesaj görmelidir. 
+6-Kullanıcıya her işlem sonrasında uygun geri bildirimler verilmelidir. Örneğin, yeni bir görev eklediğinde, görev eklenmiş olduğuna dair bir mesaj görmelidir. 
 
 ## Bonus Question 1
 [HACKERRANK: FIND DIGITS](https://www.hackerrank.com/challenges/find-digits/problem)
