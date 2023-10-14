@@ -1,0 +1,88 @@
+import time
+import random
+gorevler = []
+siralar = []
+
+
+
+
+def yeni_gorev_ekle ():
+    if len(siralar) != 0:
+        sira_numarasi = siralar.pop(0)
+        
+    else:
+        if gorevler:
+            sira_numarasi = max(gorev['Sıra Numarası'] for gorev in gorevler) + 1
+        else:
+            sira_numarasi = 1
+    gorev_ne = input("Yeni Bir Görev Giriniz:")
+    gorev = {'Sıra Numarası': sira_numarasi, 'Görev Adı': gorev_ne, 'Durumu': 'Beklemede'}
+    gorevler.append(gorev)
+    print(f"{sira_numarasi} Numaralı {gorev_ne} Adlı Görev Başarıyla Eklendi.")
+    print(type(gorevler[0]))
+    print(gorevler)
+
+
+def gorev_tamamla():
+    tamamla = int(input("Tamamlamak istediğiniz Görevin Numarasını Giriniz:"))
+    for gorev in gorevler:
+        if gorev['Sıra Numarası'] == tamamla:
+            gorev["Durumu"] = "Başarılı"
+            print(f"{gorev['Görev Adı']} Adlı Görev Tamamlandı.")
+
+def gorev_sil():
+    silmek = int(input("Silmek İstediğiniz Görevin Sıra Numarasını Giriniz:"))
+    for gorev in gorevler:
+        if gorev["Sıra Numarası"]  == silmek:
+            gorevler.remove(gorev)
+            print(f"{gorev['Görev Adı']} Adlı Görev Silindi.")
+            siralar.append(silmek)  # Silinen Numarayı listeye ekliyorum, sonra yeni göreve devretmek için.
+            
+
+def tamamlanmis_listele():
+    print("\nTamamlanmış Görevler:")
+    for gorev in gorevler:
+        if gorev['Durumu'] == 'Başarılı':
+            print(f"{gorev['Sıra Numarası']} - {gorev['Görev Adı']} - {gorev['Durumu']}")
+
+def tum_gorevler_listele():
+    print("\nGörevler:")
+    sirala = sorted(gorevler, key=lambda gorev: gorev["Sıra Numarası"])
+    for gorev in sirala:
+        print(f"{gorev['Sıra Numarası']} Numaralı {gorev['Görev Adı']} Adlı Görevin Durumu= {gorev['Durumu']}")
+
+
+
+
+while True:
+    print("\nGörev Yöneticisi Uygulaması")
+    print("---------------------------")
+    print("1- Yeni Bir Görev Eklemek için 1'e Basınız.")
+    print("2- Görev Tamamlamak için 2'ye Basınız.")
+    print("3- Görev Silmek için 3'ye Basınız.")
+    print("4- Tamamlanmış Görevleri Listelemek için 4'e Basınız.")
+    print("5- Görevleri Durumları ile Birlikte Görüntülemek için 5'e Basınız.")
+    print("6- Çıkmak için 6'ya  Basınız.")
+    print("--------------------------")
+
+    secim = input("Seçiminizi Yapınız:")
+
+    if secim == '6':
+        print("Çıkış Yapılıyor...")
+        time.sleep(1)
+        print("Çıkış Yapıldı.")
+        break
+
+    else:
+        if secim == '1':
+            yeni_gorev_ekle()
+        elif secim == '2':
+            gorev_tamamla()
+        elif secim == '3':
+            gorev_sil()
+        elif secim == '4':
+            tamamlanmis_listele()
+        elif secim == '5':
+            tum_gorevler_listele()
+        else:
+            print("Yanlış Bir Seçim Yaptınız. Lütfen Tekrar Deneyiniz! Seçim:")
