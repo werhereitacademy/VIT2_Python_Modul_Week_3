@@ -1,0 +1,79 @@
+soru1
+#Görev Yöneticisi Uygulaması
+görevler=[]
+görev_sıra_numarası=1
+görev_durumu=["Başarılı","Beklemede","Silindi"]
+
+#Yeni görev ekleme
+def yeni_görev_ekleme():
+    global görev_sıra_numarası
+    görev_adı=input("Yeni görev adı girin:")
+    görev={
+        "sıra numarası":görev_sıra_numarası,
+        "görevin adı":görev_adı,
+        "durumu":"Beklemede"
+    }
+    görevler.append(görev)
+    görev_sıra_numarası +=1
+    print("Yeni görev eklendi.",görev_adı)
+yeni_görev_ekleme()
+
+#Bir görevi tamamlama
+def görev_tamamla():
+    görev_numarası=int(input("Tamamlanan görevin sıra numarasını girin:"))
+    for görev in görevler:
+        if görev["sıra numarası"]==görev_numarası:
+            görev["durumu"]="Başarılı"
+            print("görev tamamlandı")
+            return
+    print("Belirtilen sıra numarasına sahip bir görev bulunamadı.")
+
+#Bir görevi sil
+def görev_sil():
+    görev_numarası= int(input("Silinecek görevin sıra numarasını girin: "))
+    for görev in görevler:
+        if görev["sıra numarası"] == görev_numarası:
+            görev["durumu"] = "Silindi"
+            print(f"{görev['görevin adı']} görevi silinmiştir.")
+            return
+    print("Belirtilen sıra numarasına sahip bir görev bulunamadı.")
+
+#Tamamlanmış görevleri listele
+def tamamlanmış_görevler_listesi():
+    print("Tamamlanan Görevler:")
+    for görev in görevler:
+        if görev["durumu"] == "Başarılı":
+            print(f"{görev['sıra numarası']}. {görev['görevin adı']}")
+#Tüm görevleri durumları ile birlikte listele
+def tüm_görev_durumları():
+    print("Tüm Görevler:")
+    for görev in sorted(görevler, key=lambda x: x["sıra numarası"]):
+        print(f"{görev['sıra numarası']}. {görev['görevin adı']} - Durum: {görev['durumu']}")
+
+
+while True:
+    print("\nGörev Yöneticisi Uygulaması")
+    print("1. Yeni bir görev ekle")
+    print("2. Bir görevi tamamla")
+    print("3. Bir görevi sil")
+    print("4. Tamamlanmış görevleri listele")
+    print("5. Tüm görevleri listele")
+    print("6. Çıkış")
+
+    seçim = input("Lütfen bir işlem seçin: ")
+
+    if seçim == "1":
+        yeni_görev_ekleme()
+    elif seçim == "2":
+        görev_tamamla()
+    elif seçim == "3":
+        görev_sil()
+    elif seçim == "4":
+        tamamlanmış_görevler_listesi()
+    elif seçim == "5":
+        tüm_görev_durumları()
+    elif seçim == "6":
+        print("Görev Yöneticisi uygulaması kapatılıyor.İyi günler")
+        break
+    else:
+        print("Geçersiz bir işlem seçtiniz. Lütfen tekrar deneyin.")
