@@ -1,0 +1,74 @@
+
+gorevler = []
+
+gorev_durumu = ["Beklemede", "Basarili", "Silindi"]
+
+gorev_numarasi = 1
+
+def gorev_listesi():
+    print("Gorevler")
+    if not gorevler:
+        print("Hicbir gorev eklenmedi")
+    else:
+        for gorev in gorevler:
+            print(f"{gorev['Gorev numarasi '], gorev['Gorevin adi'], gorev['Gorevin durumu']}")
+def gorev_ekleme():
+    global gorev_numarasi
+    gorev_isim = print(input("Eklemek istediginiz gorevin ismini yaziniz: "))
+    gorev = {
+    "Gorev numarasi": gorev_numarasi,
+    "Gorevin adi": gorev_isim,
+    "Gorevin durumu": 1
+    }
+    gorevler.append(gorev)
+    gorev_numarasi += 1
+    print(gorevler)
+def gorev_tamamlama():
+    gorev_listesi()
+    tamamlan_gorev = [gorev for gorev in gorevler if gorev["Durumu"] == 0]
+    print("\nTamamlanmiş Görevler:")
+    for gorev in tamamlan_gorev:
+        print(f"{gorev['Sira Numarasi']}: {gorev['Görevin Adi']} ({gorev_durumu[gorev['Durumu']]})")
+def gorev_silme():
+    gorev_listesi()
+    global gorev_numarasi
+    gorevin_numarasi = int(input("Silinecek görevin numarasini girin: "))
+    for gorev in gorevler:
+        if gorev["Sira Numarasi"] == gorev_numarasi:
+            gorevler.remove(gorev)
+
+def tamamlanmis_gorev_goruntule():
+    gorev_listesi()
+    gorev_numarasi = int(input("Tamamlanan görevin sira numarasini girin: "))
+    for gorev in gorevler:
+        if gorev["Sira Numarasi"] == gorev_numarasi:
+            gorev["Durumu"] = 0
+            print("Görev tamamlandi.")
+            return
+    print("Sira numarasi bulunamadi.")
+
+
+while True:
+    print("GOREV YONETICISI")
+    print("1.Yeni Gorev Ekle")
+    print("2.Gorevi Tamamla")
+    print("3.Gorevi Sil")
+    print("4.Tamamlanmis Gorevleri Goruntule")
+    print("5.Tum Gorevleri Goruntule")
+    print("6.Cikis")
+    gorevlendirme = input("Lutfen yapmak istediginiz islemi seciniz: ")
+    if gorevlendirme == "1":
+        gorev_ekleme()
+    if gorevlendirme == "2":
+        gorev_tamamlama()
+    if gorevlendirme == "3":
+        gorev_silme()
+    if gorevlendirme == "4":
+        tamamlanmis_gorev_goruntule()
+    if gorevlendirme == "5":
+        #gorev_listesi()
+        print(gorevler)
+    if gorevlendirme == "6":
+        break
+    else:
+         print("Yanlis komut, Lutfen gorev yoneticisinden bir secenek seciniz")
