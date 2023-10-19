@@ -1,0 +1,72 @@
+tasks = []  # Görevlerin saklandığı liste
+task_counter = 1  # Her göreve otomatik olarak atanacak sıra numarası
+
+# Tüm görevleri sıra numarası ve durumu ile birlikte listeleyen fonksiyon
+def list_tasks():
+    print("Tüm Görevler:")
+    for task in tasks:
+        print(f"{task['Sıra Numarası']}. {task['Görevin Adı']} - Durum: {task['Durumu']}")
+
+# Yeni görev ekleyen fonksiyon
+def add_task():
+    global task_counter
+    task_name = input("Yeni görevin adını girin: ")
+    new_task = {
+        "Sıra Numarası": task_counter,
+        "Görevin Adı": task_name,
+        "Durumu": "Beklemede"
+    }
+    tasks.append(new_task)
+    task_counter += 1
+    print("Yeni görev eklendi.")
+
+# Bir görevi tamamlayan fonksiyon
+def complete_task():
+    task_number = int(input("Tamamlanan görevin sıra numarasını girin: "))
+    for task in tasks:
+        if task["Sıra Numarası"] == task_number:
+            task["Durumu"] = "Başarılı"
+            print(f"{task['Görevin Adı']} tamamlandı.")
+            return
+    print("Görev bulunamadı.")
+
+# Bir görevi silen fonksiyon
+def delete_task():
+    task_number = int(input("Silinecek görevin sıra numarasını girin: "))
+    for task in tasks:
+        if task["Sıra Numarası"] == task_number:
+            task["Durumu"] = "Silindi"
+            print(f"{task['Görevin Adı']} silindi.")
+            return
+    print("Görev bulunamadı.")
+
+# Kullanıcının işlem yapabileceği ana döngü
+while True:
+    print("\nYapabileceğiniz İşlemler:")
+    print("1. Yeni görev ekle")
+    print("2. Bir görevi tamamla")
+    print("3. Bir görevi sil")
+    print("4. Tamamlanmış görevleri listele")
+    print("5. Tüm görevleri listele")
+    print("6. Çıkış")
+    
+    choice = input("Lütfen bir seçenek girin: ")
+
+    # Kullanıcının seçimine göre ilgili işlemi gerçekleştiren şartlar
+    if choice == "1":
+        add_task()  # Yeni görev eklenir
+    elif choice == "2":
+        complete_task()  # Bir görev tamamlanır
+    elif choice == "3":
+        delete_task()  # Bir görev silinir
+    elif choice == "4":
+        tasks.sort(key=lambda x: x["Sıra Numarası"])  # Görevler sıra numarasına göre sıralanır
+        list_tasks()  # Tamamlanmış görevler listelenir
+    elif choice == "5":
+        tasks.sort(key=lambda x: x["Sıra Numarası"])  # Görevler sıra numarasına göre sıralanır
+        list_tasks()  # Tüm görevler listelenir
+    elif choice == "6":
+        print("Çıkılıyor...")  # Programdan çıkış yapılır
+        break
+    else:
+        print("Geçersiz bir seçenek girdiniz. Lütfen tekrar deneyin.")
