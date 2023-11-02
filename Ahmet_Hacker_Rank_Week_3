@@ -1,0 +1,19 @@
+# Link 1 - Find Digits
+
+def findDigits(n):
+    a = str(n)
+    dongu = 0
+    for i in a:
+        if int(i) == 0:
+            continue
+        if int(a) % int(i) == 0:
+            dongu += 1
+    return dongu
+
+
+#----
+
+# Link 2 - Capitalize!
+    for isim in s.split():
+        s = s.replace(isim, isim.capitalize())
+    return s
